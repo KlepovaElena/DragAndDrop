@@ -14,17 +14,14 @@ public class DragAndDrop {
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
+        open("https://the-internet.herokuapp.com/drag_and_drop");
     }
 
     @Test
     void dragAndDropTest1() {
 
-        // Открыть https://the-internet.herokuapp.com/drag_and_drop
-        open("https://the-internet.herokuapp.com/drag_and_drop");
-
         // Перенести прямоугольник А на место В
-
-        actions().dragAndDrop($("#column-a"), $("#column-b"));
+        actions().clickAndHold($("#column-a")).moveToElement($("#column-b")).release().perform();
 
         // Проверить, что прямоугольники действительно поменялись
         $("#column-a").shouldHave(Condition.text("B"));
@@ -33,9 +30,6 @@ public class DragAndDrop {
     // Тест с помощью команды
     @Test
     void dragAndDropTest2() {
-
-        // Открыть https://the-internet.herokuapp.com/drag_and_drop
-        open("https://the-internet.herokuapp.com/drag_and_drop");
 
         // Перенесьти прямоугольник А на место В
         $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
