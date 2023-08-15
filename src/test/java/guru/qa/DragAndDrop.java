@@ -27,7 +27,7 @@ public class DragAndDrop {
         $("#column-a").shouldHave(Condition.text("B"));
     }
 
-    // Тест с помощью команды
+    // Тест с помощью команды $(element).dragAndDrop($(to-element))
     @Test
     void dragAndDropTest2() {
 
